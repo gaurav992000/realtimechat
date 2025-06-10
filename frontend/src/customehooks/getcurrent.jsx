@@ -4,6 +4,7 @@ import { serverurl } from "../main"
 import { setUserData } from "../redux/userSlice"
 import { useDispatch, useSelector } from "react-redux"
 
+
 const getCurrentUser=()=>{
     let dispatch=useDispatch()
     let{userData}=useSelector(state=>state.user)
@@ -11,6 +12,8 @@ const getCurrentUser=()=>{
         const fetchUser=async()=>{
             try{
                 let result =await axios.get(`${serverurl}/api/user/current`,{withCredentials:true})
+                console.log(result);
+                
 
                 dispatch(setUserData(result.data))
             }

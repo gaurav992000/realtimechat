@@ -71,9 +71,10 @@ import bcrypt from "bcryptjs"
         return res.status(400).json({message:"incorrect password"})
      }
 
-
-
-     const token=genToken()
+        const token=await genToken(user._id)
+        if(!token) {
+            return res.status(500).json({message:"Error generating token"})
+        }
 
      res.cookie("token",token,{
         httpOnly:true,

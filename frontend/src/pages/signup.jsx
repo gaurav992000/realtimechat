@@ -2,13 +2,15 @@ import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { serverurl } from "../main"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { setUserData } from "../redux/userSlice"
 
 
 export function Signup() {
     const [show,setshow]=useState(false)
     let dispatch=useDispatch()
+    console.log(dispatch);
+    
    
 
     let navigate=useNavigate()
@@ -26,7 +28,7 @@ const handlerSingnUp=async(e)=>{
 
         },{withCredentials:true})
         console.log(result);
-        dispatch(setUserData(result.data))
+         dispatch(setUserData(result.data))
          setemail("")
         setpassword("")
         setusername("")

@@ -21,6 +21,8 @@ import User from "../models/usermodel.js"
       let image;
       if(req.file){
         image= await uploadOnCloudinary(req.file.path)
+        console.log(image);
+        
       }
 
       let user=await User.findByIdAndUpdate(req.userId,{name,image})
@@ -29,6 +31,8 @@ import User from "../models/usermodel.js"
         return res.status(400).json({message:"user not found"})
       }
       return res.status(200).json(user)
+      console.log("editprofile");
+      
 
     }catch(error){
       return res.status(500).json({message:`profile error ${error}`})

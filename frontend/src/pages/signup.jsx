@@ -29,6 +29,7 @@ const handlerSingnUp=async(e)=>{
         },{withCredentials:true})
         console.log(result);
          dispatch(setUserData(result.data))
+         navigate("/profile")
          setemail("")
         setpassword("")
         setusername("")

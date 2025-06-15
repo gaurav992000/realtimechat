@@ -6,9 +6,11 @@ import { Profile } from './pages/Profile'
 
 import { useSelector } from 'react-redux'
 import getCurrentUser from './customehooks/getcurrent'
+import getotheruser from './customehooks/getotheruser'
 
 function App() {
-    getCurrentUser() // Call the function
+    getCurrentUser() 
+    getotheruser()// Call the function
     const { userData } = useSelector(state => state.user)
     
     return (

@@ -54,6 +54,7 @@ const handelProfile=async (e)=>{
         })
 
         dispatch( setUserData(result.data))
+        navigate("/")
     }catch(error){
         console.log(error);
         

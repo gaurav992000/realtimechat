@@ -9,7 +9,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function SideBar() {
-  let { userData, otherusers,selecteduser } = useSelector((state) => state.user);
+  let { userData, otherusers,selecteduser,onlineusers } = useSelector((state) => state.user);
   let [search, setsearch] = useState(false);
   let dispatch=useDispatch()
 const navigate = useNavigate();
@@ -26,7 +26,7 @@ const navigate = useNavigate();
     }
   }
   return (
-    <div className={`lg:w-[30%] w-full h-full bg-slate-200 lg:block ${!selecteduser?"block":"hidden"}`}>
+    <div className={`lg:w-[30%] w-full overflow-hidden h-full bg-slate-200 lg:block ${!selecteduser?"block":"hidden"}`}>
  <div
               className="w-[60px] h-[60px] rounded-full overflow-hidden flex justify-center items-center bg-white shadow-gray-500 shadow-lg mt-[10px] cursor-pointer fixed bottom-[20px] left-[20px]"
               
@@ -45,7 +45,7 @@ const navigate = useNavigate();
             <img src={userData.image} className="h-[100%]" />
           </div>
         </div>
-        <div className="w-full flex items-center gap-[20px]">
+        <div className="w-full flex items-center gap-[20px] overflow-auto py-[10px]">
           {!search && (
             <div
               className="w-[60px] h-[60px] rounded-full overflow-hidden flex justify-center items-center bg-white shadow-gray-500 shadow-lg mt-[10px] cursor-pointer"
@@ -69,17 +69,17 @@ const navigate = useNavigate();
             </form>
           )}
 
-          {!search && otherusers?.map((user) => (
-            <div className="w-[60px] h-[60px] rounded-full overflow-hidden flex justify-center bg-white shadow-gray-500 shadow-lg ">
+          {!search && otherusers?.map((user) => (onlineusers?.includes(user._id) &&(
+            <div key={user._id} className="w-[60px] h-[60px] rounded-full overflow-hidden flex justify-center bg-white shadow-gray-500 shadow-lg ">
               <img src={user.image} className="h-[100%]" />
-            </div>
+            </div>)
           ))}
         </div>
       </div>
 
-<div className="flex flex-col gap-[20px] overflow-auto items-center mt-[20px]">
+<div className="flex h-[50%] flex-col gap-[20px] overflow-auto items-center mt-[20px]">
   {otherusers?.map((user) => (
-    <div className="w-[95%] h-[60px] bg-white shadow-lg rounded-full flex justify-start items-center gap-[20px] hover:bg-[#b2ccdf]   cursor-pointer" onClick={()=>dispatch(setselecteduser(user))}>
+    <div key={user._id}  className="w-[95%] h-[60px] bg-white shadow-lg rounded-full flex justify-start items-center gap-[20px] hover:bg-[#b2ccdf]   cursor-pointer" onClick={()=>dispatch(setselecteduser(user))}>
   
             <div className="w-[60px] h-[60px] rounded-full overflow-hidden flex justify-center bg-white shadow-gray-500 shadow-lg ">
               <img src={user.image} className="h-[100%]" />

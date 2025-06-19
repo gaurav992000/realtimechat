@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import axios from"axios"
 import { serverurl } from "../main"
 import { useDispatch, useSelector } from "react-redux"
-import { setUserData } from "../redux/userSlice"
+import { setselecteduser, setUserData } from "../redux/userSlice"
 // import { set } from "mongoose"
 
 export function Login() {
@@ -29,6 +29,7 @@ const handlerSingnUp=async(e)=>{
         },{withCredentials:true})
         console.log(result);
         dispatch(setUserData(result.data))
+        dispatch(setselecteduser(null))
        navigate("/")
         setemail("")
         setpassword("")

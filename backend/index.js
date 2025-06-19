@@ -13,7 +13,7 @@ const port =process.env.PORT || 6000
 
 
 app.use(cors({
-    origin: 'http://localhost:5173', // Frontend URL
+    origin: 'https://realtimechat-ylxp.onrender.com', // Frontend URL
     credentials: true
 }));
 app.use(express.json())

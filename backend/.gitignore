@@ -1,25 +1,59 @@
+
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Environment variables
 .env
-# Logs
-logs
-*.log
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+/build
+/dist
+/.next
+/out
+
+# Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Upload directories
+/uploads
+/public/uploads
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+
+# Testing
+/coverage
+
+# Cache directories
+.cache/
+.temp/
+
+# Local SSL certificates
+*.pem
+*.key
+*.crt
+
+# MongoDB local files
+/data/db
+
+# Cloudinary credentials
+cloudinary.config.js
+
+# Socket.IO related
+*.sock
+
+# Log files
+*.log
+logs/
